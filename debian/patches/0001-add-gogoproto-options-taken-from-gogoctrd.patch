@@ -1,0 +1,52 @@
+From: Shengjing Zhu <zhsj@debian.org>
+Date: Sun, 23 Aug 2020 18:37:40 +0800
+Subject: add gogoproto options taken from gogoctrd
+
+We don't use gogoctrd in this package, so set these options manually.
+See the options at:
+https://github.com/containerd/containerd/blob/master/cmd/protoc-gen-gogoctrd/main.go
+
+Forwarded: not-needed
+---
+ stats/v1/metrics.proto | 8 ++++++++
+ v2/stats/metrics.proto | 8 ++++++++
+ 2 files changed, 16 insertions(+)
+
+diff --git a/stats/v1/metrics.proto b/stats/v1/metrics.proto
+index b3f6cc3..0674c35 100644
+--- a/stats/v1/metrics.proto
++++ b/stats/v1/metrics.proto
+@@ -2,6 +2,14 @@ syntax = "proto3";
+ 
+ package io.containerd.cgroups.v1;
+ 
++option (gogoproto.goproto_getters_all) = false;
++option (gogoproto.goproto_stringer_all) = false;
++option (gogoproto.gostring_all) = false;
++option (gogoproto.marshaler_all) = true;
++option (gogoproto.stringer_all) = true;
++option (gogoproto.unmarshaler_all) = true;
++option (gogoproto.sizer_all) = true;
++
+ import "gogoproto/gogo.proto";
+ 
+ message Metrics {
+diff --git a/v2/stats/metrics.proto b/v2/stats/metrics.proto
+index 8ac472e..b99de76 100644
+--- a/v2/stats/metrics.proto
++++ b/v2/stats/metrics.proto
+@@ -2,6 +2,14 @@ syntax = "proto3";
+ 
+ package io.containerd.cgroups.v2;
+ 
++option (gogoproto.goproto_getters_all) = false;
++option (gogoproto.goproto_stringer_all) = false;
++option (gogoproto.gostring_all) = false;
++option (gogoproto.marshaler_all) = true;
++option (gogoproto.stringer_all) = true;
++option (gogoproto.unmarshaler_all) = true;
++option (gogoproto.sizer_all) = true;
++
+  import "gogoproto/gogo.proto";
+ 
+ message Metrics {

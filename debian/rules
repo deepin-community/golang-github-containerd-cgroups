@@ -1,4 +1,14 @@
 #!/usr/bin/make -f
 
+export DH_GOLANG_EXCLUDES := cmd/cgctl
+
 %:
-	dh $@
+	dh $@ --builddirectory=_build --buildsystem=golang --with=golang
+
+execute_after_dh_auto_configure:
+	cd _build/src && protoc -I.:/usr/share/gocode/src/github.com/gogo/protobuf/:/usr/include \
+		--gogo_out=import_path=github.com/containerd/cgroups/stats/v1:. \
+		github.com/containerd/cgroups/stats/v1/metrics.proto
+	cd _build/src && protoc -I.:/usr/share/gocode/src/github.com/gogo/protobuf/:/usr/include \
+		--gogo_out=import_path=github.com/containerd/cgroups/v2/stats:. \
+		github.com/containerd/cgroups/v2/stats/metrics.proto

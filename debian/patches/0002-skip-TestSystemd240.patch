@@ -1,0 +1,21 @@
+From: Shengjing Zhu <zhsj@debian.org>
+Date: Sun, 23 Aug 2020 18:58:06 +0800
+Subject: skip TestSystemd240
+
+Forwarded: not-needed
+---
+ paths_test.go | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/paths_test.go b/paths_test.go
+index 9dd2898..5d7caaa 100644
+--- a/paths_test.go
++++ b/paths_test.go
+@@ -114,6 +114,7 @@ func TestEmptySubsystem(t *testing.T) {
+ }
+ 
+ func TestSystemd240(t *testing.T) {
++	t.Skip("cgroup is not mounted in schroot")
+ 	if isUnified {
+ 		t.Skipf("requires the system to be running in legacy mode")
+ 	}
