@@ -1,3 +1,21 @@
+golang-github-containerd-cgroups (3.0.3-3) unstable; urgency=medium
+
+  * Team upload
+  * Upload changes from experimental to unstable
+  * Update Standards-Version to 4.7.0 in d/control (no changes needed)
+
+ -- Mathias Gibbens <gibmat@debian.org>  Fri, 26 Jul 2024 02:30:37 +0000
+
+golang-github-containerd-cgroups (3.0.3-2) experimental; urgency=medium
+
+  * New major upstream release, Closes: #1073552
+    - This new generates code using google/protobuf (i.e., protobuf APIv2)
+  * add uber-goleak as test-only dependency
+  * Build depend on protobuild to fixup generated protobuf code
+  * Add myself as uploaders
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sun, 30 Jun 2024 09:59:46 -0400
+
 golang-github-containerd-cgroups (1.0.4-1) unstable; urgency=medium
 
   * Team upload.

@@ -4,18 +4,18 @@ Subject: skip TestSystemd240
 
 Forwarded: not-needed
 ---
- paths_test.go | 1 +
+ cgroup1/paths_test.go | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/paths_test.go b/paths_test.go
-index 9dd2898..5d7caaa 100644
---- a/paths_test.go
-+++ b/paths_test.go
-@@ -114,6 +114,7 @@ func TestEmptySubsystem(t *testing.T) {
+diff --git a/cgroup1/paths_test.go b/cgroup1/paths_test.go
+index 8afe2ce..8646821 100644
+--- a/cgroup1/paths_test.go
++++ b/cgroup1/paths_test.go
+@@ -92,6 +92,7 @@ func TestRootPath(t *testing.T) {
  }
  
  func TestSystemd240(t *testing.T) {
-+	t.Skip("cgroup is not mounted in schroot")
++	t.Skip("cgroup is not mounted in Debian schroot")
  	if isUnified {
  		t.Skipf("requires the system to be running in legacy mode")
  	}
