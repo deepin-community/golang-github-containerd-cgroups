@@ -7,30 +7,18 @@ https://ci.debian.net/data/autopkgtest/unstable/amd64/g/golang-github-containerd
 
 Forwarded: not-needed
 ---
- v2/manager_test.go   | 3 +++
- v2/testutils_test.go | 1 +
- 2 files changed, 4 insertions(+)
+ cgroup2/testutils_test.go | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/v2/manager_test.go b/v2/manager_test.go
-index 35d104c..8b29c64 100644
---- a/v2/manager_test.go
-+++ b/v2/manager_test.go
-@@ -1,3 +1,6 @@
-+//go:build ignore
-+// +build ignore
-+
- /*
-    Copyright The containerd Authors.
- 
-diff --git a/v2/testutils_test.go b/v2/testutils_test.go
-index a329ce8..abfb9c0 100644
---- a/v2/testutils_test.go
-+++ b/v2/testutils_test.go
+diff --git a/cgroup2/testutils_test.go b/cgroup2/testutils_test.go
+index a4c4bc7..c0ac8d3 100644
+--- a/cgroup2/testutils_test.go
++++ b/cgroup2/testutils_test.go
 @@ -28,6 +28,7 @@ import (
  )
  
- func checkCgroupMode(t *testing.T) {
-+	t.Skip("cgroupv2 support in LXC container on ci.debian.net is broken")
- 	var st syscall.Statfs_t
- 	if err := syscall.Statfs(defaultCgroup2Path, &st); err != nil {
- 		t.Fatal("cannot statfs cgroup root")
+ func checkCgroupMode(tb testing.TB) {
++	tb.Skip("cgroupv2 support in LXC container on ci.debian.net is broken")
+ 	var st unix.Statfs_t
+ 	err := unix.Statfs(defaultCgroup2Path, &st)
+ 	require.NoError(tb, err, "cannot statfs cgroup root")

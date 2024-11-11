@@ -1,0 +1,22 @@
+From: Reinhard Tartler <siretart@tauware.de>
+Date: Mon, 21 Oct 2024 16:45:39 -0400
+Subject: Debian does not allow access to mm/hugepages
+
+Bug-Debian: https://bugs.debian.org/1072151
+---
+ cgroup1/mock_test.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cgroup1/mock_test.go b/cgroup1/mock_test.go
+index 22c9bd5..2d021cf 100644
+--- a/cgroup1/mock_test.go
++++ b/cgroup1/mock_test.go
+@@ -30,7 +30,7 @@ func newMock(tb testing.TB) (*mockCgroup, error) {
+ 	root := tb.TempDir()
+ 	subsystems, err := defaults(root)
+ 	if err != nil {
+-		return nil, err
++		tb.Skipf("Skipping test, failed to setup mock: %v", err)
+ 	}
+ 	for _, s := range subsystems {
+ 		if err := os.MkdirAll(filepath.Join(root, string(s.Name())), defaultDirPerm); err != nil {
